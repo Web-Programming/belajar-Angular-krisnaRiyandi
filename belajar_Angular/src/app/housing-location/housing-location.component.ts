@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HousingLocation } from '../housing-location';
 
 @Component({
   selector: 'app-housing-location',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   template: `
-    <p>
-      housing-location works!
-    </p>
+    <section>
+      <img ckass="listing-photo" [src]="housingLocation.photo" alt="Exterior photo of {{ housingLocation.name}}">
+      <h2 class="listing-heading">{{ housingLocation.name}}</h2>
+      <p class="listing-location">{{ housingLocation.city}}, {{ housingLocation.state}}</p>
+    </section>
   `,
   styleUrl: './housing-location.component.css'
 })
 export class HousingLocationComponent {
-
+  //mengisi data di home.component.ts
+  @Input() housingLocation! : HousingLocation;
 }
